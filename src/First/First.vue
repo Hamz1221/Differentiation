@@ -443,7 +443,13 @@ export default {
 
       el["fx"].setAttribute("d", fxStr);
       el["blob"].setAttribute("d", "M " + (x0+xScale*z0) + "," + y0 + " L " + (x0+xScale*z0) + "," + (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)) ));
-      el["blob2"].setAttribute("d", "M " + (x0+xScale*z0 + xOffset) + "," + y0 + " L " + (x0+xScale*z0 + xOffset) + "," + (y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale)) ));
+      let blob2Xpos = x0+xScale*z0 + xOffset;
+      if (blob2Xpos >= 567.123735){
+          blob2Xpos = 567.123735;
+          el["deltaX"].value = `${567.123735 - (x0+xScale*z0)}`
+          xOffset = el["deltaX"].valueAsNumber; 
+      }
+      el["blob2"].setAttribute("d", "M " + (blob2Xpos) + "," + y0 + " L " + (blob2Xpos) + "," + (y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale)) ));
 
       // Change line style when not at exact derivative 
       if(xOffset === 0.0001){
@@ -452,10 +458,10 @@ export default {
         el["lineExt"].setAttribute("stroke-dasharray", "8 3") 
       }
 
-      let angle = Math.atan2((y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))) - (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0))), (x0+xScale*z0 + xOffset) - (x0+xScale*z0)) * 180 / Math.PI;
+      let angle = Math.atan2((y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))) - (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0))), (blob2Xpos) - (x0+xScale*z0)) * 180 / Math.PI;
       const xDiff = (parseFloat(el["lineExt"].getAttribute('x1')) + parseFloat(el["lineExt"].getAttribute("x2"))) / 2;
 
-      el["lineExt"].setAttribute("transform", `translate(${((x0+xScale*z0)+(x0+xScale*z0 + xOffset))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);      
+      el["lineExt"].setAttribute("transform", `translate(${((x0+xScale*z0)+(blob2Xpos))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);      
     };
   
     // This function runs when the page loads (see <body> tag in index.html)
@@ -512,6 +518,11 @@ export default {
   
       // on mouse up, set mousePressed to false
       el["graph"].onmouseup = function (e) {
+        mousePressed = false;
+        return e.preventDefault();
+      };
+
+      el["root"].onmouseup = function (e) {
         mousePressed = false;
         return e.preventDefault();
       };
