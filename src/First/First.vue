@@ -1,8 +1,11 @@
 <template>
     <div>
         <iv-visualisation :title="pageName" :vue_config="vue_config" :page_number="1">
-        
-        <body>
+            <!-- <template #hotspots>
+                 <iv-toggle-hotspot position="absolute" title="Sidebar" style="z-index:2"></iv-toggle-hotspot>
+            </template> -->
+    <div>
+<body style="height: 100%; overflow: hidden; margin: 0; position:relative">
 
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
@@ -14,8 +17,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    id="root"
-   height="900" 
-   width="1900">
+   height="673" 
+   width="100%"
+   >
    <!-- h=500, w-570 -->
   <defs
      id="defs4">
@@ -303,6 +307,7 @@
     </foreignObject>
   </g>
   <!-- <text id="initText" text-anchor="middle" width="500px" x="50%" y="250" style="fill: white; font-family: Helvetica, Nimbus Sans L, Arial, sans-serif; font-weight: bold; font-size: 24pt;">Click to begin…</text> -->
+
 </svg>
 
 <!--<div class="slidecontainer">
@@ -311,6 +316,7 @@
 </div>-->
 
 </body>
+</div>
 </iv-visualisation>
     </div>
 </template>

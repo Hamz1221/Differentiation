@@ -1,7 +1,7 @@
 <template>
     <div>
         <iv-visualisation :title="pageName" :vue_config="vue_config" :page_number="2">
-            <body>
+            <body style="margin:0px; padding:0px; width: 100%; height: 100%;">
 
 <div id="limitDisplay" style="position: absolute; left: 640px; top: 80px; display: none;">
    <img src="limitEquation.svg" style="position: absolute; left:0px; top: 100px; z-index: 1; -webkit-filter: invert(1);
@@ -32,8 +32,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    id="root"
-   height="900"
-   width="125%">
+   height="850"
+   width="100%">
    <!--when I change height to 100%, the graphs are cut off- not sure why-->
    <defs>
       <g id = "derivColourmask">
@@ -901,5 +901,8 @@ export default {
                 width: var(--axis-width);
             }
         }
-
+        /* body{
+            transform: scale(0.87);
+            transform-origin: 0 0;
+        } */
       </style>
