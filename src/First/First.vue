@@ -1,9 +1,39 @@
 <template>
     <div>
         <iv-visualisation :title="pageName" :vue_config="vue_config" :page_number="1">
-            <!-- <template #hotspots>
-                 <iv-toggle-hotspot position="absolute" title="Sidebar" style="z-index:2"></iv-toggle-hotspot>
-            </template> -->
+            <template #hotspots>
+                <iv-pane position="left">
+
+                </iv-pane>
+
+                 <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
+                    <div class="slidecontainer" style="float:right;">
+                      Function: 
+                      <select id="function" style="width:188px; padding:0px; margin: 0px;">
+                        <option value="sin">Sin(x)</option>
+                        <option value="exp">Exponential Decay</option>
+                        <option value="tan">Tan(x)</option>
+                        <option value="gauss">Gaussian</option>
+                        <option value="parab">Parabola (2nd Order Polynomial)</option>
+                        <!-- <option value="parabStep">Parabola with Step Function</option> -->
+                        <option value="poly">Polynomial (6th Order)</option>
+                      </select>
+                      <br>
+                      <br>
+
+                      Delta x:
+                      <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;">
+                    
+
+                    
+
+                    </div>
+
+                    
+  
+                  
+                 </iv-toggle-hotspot>
+            </template>
     <div>
 <body style="height: 100%; overflow: hidden; margin: 0; position:relative">
 
@@ -292,18 +322,7 @@
        width="192"
        style="overflow:visible;"
        id="foFunction">
-       <select id="function" style="width:188px; padding:0px; margin: 0px;">
-        <option value="sin">Sin(x)</option>
-        <option value="exp">Exponential Decay</option>
-        <option value="tan">Tan(x)</option>
-        <option value="gauss">Gaussian</option>
-        <option value="parab">Parabola (2nd Order Polynomial)</option>
-        <!-- <option value="parabStep">Parabola with Step Function</option> -->
-        <option value="poly">Polynomial (6th Order)</option>
-       </select>
-       <div class="slidecontainer">
-         <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;">
-       </div>      
+       
     </foreignObject>
   </g>
   <!-- <text id="initText" text-anchor="middle" width="500px" x="50%" y="250" style="fill: white; font-family: Helvetica, Nimbus Sans L, Arial, sans-serif; font-weight: bold; font-size: 24pt;">Click to begin…</text> -->
