@@ -2,7 +2,7 @@
     <div>
         <iv-visualisation :title="pageName" :vue_config="vue_config" :page_number="1">
             <template #hotspots>
-                <iv-pane position="left">
+                <iv-pane position="left" id="pane">
 
                 </iv-pane>
 
@@ -35,7 +35,7 @@
                  </iv-toggle-hotspot>
             </template>
     <div>
-<body style="height: 100%; overflow: hidden; margin: 0; position:relative">
+<body style="height: 100%; overflow: hidden; margin: 0; position:relative" id="body">
 
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
@@ -61,7 +61,7 @@
        orient="auto">
       <path
          transform="scale(0.4) translate(7.4, 1)"
-         style="fill-rule:evenodd;stroke:white;stroke-width:1pt;stroke-opacity:1;fill:#5DFF33;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#5DFF33;fill-opacity:1"
          d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
          id="path9112" />
     </marker>
@@ -73,7 +73,7 @@
        orient="auto">
       <path
          transform="scale(0.4)"
-         style="fill-rule:evenodd;stroke:#f0f5fa;stroke-width:1pt;stroke-opacity:1;fill:#f0f5fa;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
          d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
          id="path7898" />
     </marker>
@@ -85,7 +85,7 @@
        orient="auto">
       <path
          transform="scale(0.4)"
-         style="fill-rule:evenodd;stroke:#f0f5fa;stroke-width:1pt;stroke-opacity:1;fill:#f0f5fa;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
          d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
          id="path7713" />
     </marker>
@@ -159,8 +159,9 @@
   <g
      transform="translate(-23.123835,-221.57211)"
      id="layer1">
+     <!-- url(#radialGradient4581-1) -->
     <rect
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:white;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
        id="rect4573-0"
        width="100%"
        height="100%"
@@ -197,11 +198,11 @@
         <path
            id="yAxis"
            d="m 55.123835,689.57214 v -384"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
         <path
            id="xAxis"
            d="M 55.123835,497.57214 H 567.12383"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
       </g>
       <path
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#afdb85;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers"
@@ -236,7 +237,7 @@
        xml:space="preserve"
        transform="matrix(2.4000001,0,0,-2.4,-166.46648,2191.4404)"
        id="content"><path
-         style="fill:#f0f5fa;stroke-width:0"
+         style="fill:#000000;stroke-width:0"
          id="path10149"
          d="m 306.11,698.17 v 0.03 l 0.01,0.03 0.01,0.03 0.01,0.03 0.01,0.04 0.01,0.04 0.01,0.05 0.02,0.04 0.01,0.05 0.02,0.05 0.02,0.04 0.02,0.05 0.02,0.05 0.03,0.05 0.02,0.05 0.03,0.05 0.03,0.05 0.03,0.05 0.04,0.04 0.03,0.05 0.04,0.04 0.04,0.04 0.04,0.04 0.04,0.04 0.05,0.03 0.05,0.03 0.03,0.01 0.02,0.01 0.03,0.01 0.02,0.01 0.03,0.01 0.03,0.01 0.03,0.01 h 0.03 l 0.03,0.01 h 0.03 0.03 0.04 c 0.04,0 0.28,0 0.49,-0.13 -0.28,-0.05 -0.48,-0.3 -0.48,-0.53 0,-0.16 0.12,-0.35 0.38,-0.35 0.22,0 0.54,0.18 0.54,0.58 0,0.51 -0.59,0.65 -0.92,0.65 -0.58,0 -0.93,-0.53 -1.05,-0.75 -0.25,0.65 -0.79,0.75 -1.08,0.75 -1.04,0 -1.6,-1.28 -1.6,-1.53 0,-0.1 0.1,-0.1 0.11,-0.1 0.09,0 0.12,0.02 0.13,0.11 0.34,1.05 1,1.3 1.34,1.3 0.19,0 0.54,-0.09 0.54,-0.66 0,-0.31 -0.17,-0.98 -0.54,-2.37 -0.16,-0.61 -0.51,-1.03 -0.95,-1.03 -0.06,0 -0.29,0 -0.49,0.13 0.24,0.05 0.46,0.26 0.46,0.54 0,0.26 -0.22,0.34 -0.37,0.34 -0.29,0 -0.54,-0.26 -0.54,-0.57 0,-0.46 0.5,-0.66 0.93,-0.66 0.66,0 1.02,0.7 1.05,0.76 0.12,-0.37 0.48,-0.76 1.08,-0.76 1.02,0 1.59,1.28 1.59,1.53 0,0.1 -0.09,0.1 -0.12,0.1 -0.09,0 -0.11,-0.04 -0.13,-0.11 -0.33,-1.06 -1,-1.3 -1.32,-1.3 -0.39,0 -0.55,0.32 -0.55,0.65 0,0.22 0.06,0.44 0.17,0.88 z" /></g>    <g
        id="g10296"
@@ -262,7 +263,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10288" /><path
          d="m 305.18,692.79 v 0 0.01 0 0 0.01 0 0 l -0.01,0.01 v 0 0 0.01 h -0.01 v 0.01 0 l -0.01,0.01 v 0.01 h -0.01 v 0.01 h -0.01 v 0.01 0 l -0.01,0.01 v 0 0 l -0.01,0.01 v 0 l -0.01,0.01 v 0 l -0.01,0.01 v 0 l -0.01,0.01 v 0.01 h -0.01 v 0.01 h -0.01 l -0.01,0.01 v 0.01 h -0.01 l -0.01,0.01 -0.01,0.01 V 693 h -0.01 c -1.25,1.26 -1.57,3.13 -1.57,4.65 0,1.73 0.38,3.46 1.61,4.7 0.13,0.12 0.13,0.14 0.13,0.17 0,0.07 -0.04,0.1 -0.1,0.1 -0.1,0 -1,-0.67 -1.59,-1.94 -0.51,-1.09 -0.63,-2.19 -0.63,-3.03 0,-0.77 0.12,-1.97 0.66,-3.1 0.6,-1.22 1.46,-1.86 1.56,-1.86 0.06,0 0.1,0.03 0.1,0.1 z"
          font-size-adjust="none"
@@ -273,7 +274,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10290" /><path
          d="m 309.08,698.17 0.01,0.03 0.01,0.03 v 0.03 l 0.01,0.03 0.01,0.04 0.02,0.04 0.01,0.05 0.01,0.04 0.02,0.05 0.02,0.05 0.02,0.04 0.02,0.05 0.02,0.05 0.02,0.05 0.03,0.05 0.03,0.05 0.03,0.05 0.03,0.05 0.03,0.04 0.04,0.05 0.03,0.04 0.04,0.04 0.05,0.04 0.04,0.04 0.05,0.03 0.04,0.03 0.03,0.01 0.03,0.01 0.02,0.01 0.03,0.01 0.03,0.01 0.03,0.01 0.02,0.01 h 0.03 l 0.03,0.01 h 0.04 0.03 0.03 c 0.05,0 0.29,0 0.5,-0.13 -0.28,-0.05 -0.48,-0.3 -0.48,-0.53 0,-0.16 0.11,-0.35 0.38,-0.35 0.22,0 0.54,0.18 0.54,0.58 0,0.51 -0.59,0.65 -0.93,0.65 -0.58,0 -0.93,-0.53 -1.05,-0.75 -0.25,0.65 -0.79,0.75 -1.07,0.75 -1.04,0 -1.61,-1.28 -1.61,-1.53 0,-0.1 0.1,-0.1 0.12,-0.1 0.08,0 0.11,0.02 0.13,0.11 0.34,1.05 1,1.3 1.34,1.3 0.18,0 0.53,-0.09 0.53,-0.66 0,-0.31 -0.17,-0.98 -0.53,-2.37 -0.16,-0.61 -0.51,-1.03 -0.95,-1.03 -0.06,0 -0.29,0 -0.5,0.13 0.25,0.05 0.47,0.26 0.47,0.54 0,0.26 -0.22,0.34 -0.37,0.34 -0.3,0 -0.55,-0.26 -0.55,-0.57 0,-0.46 0.5,-0.66 0.94,-0.66 0.66,0 1.02,0.7 1.05,0.76 0.11,-0.37 0.47,-0.76 1.07,-0.76 1.03,0 1.6,1.28 1.6,1.53 0,0.1 -0.09,0.1 -0.12,0.1 -0.09,0 -0.11,-0.04 -0.13,-0.11 -0.33,-1.06 -1.01,-1.3 -1.33,-1.3 -0.39,0 -0.55,0.32 -0.55,0.65 0,0.22 0.06,0.44 0.17,0.88 z"
          font-size-adjust="none"
@@ -284,7 +285,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10292" /><path
          d="m 314.33,697.65 v 0.08 0.07 l -0.01,0.08 v 0.08 l -0.01,0.17 -0.01,0.18 -0.01,0.18 -0.03,0.19 -0.02,0.19 -0.04,0.2 -0.03,0.21 -0.05,0.2 -0.05,0.21 -0.07,0.21 -0.07,0.22 -0.07,0.21 -0.05,0.11 -0.04,0.1 -0.05,0.11 -0.05,0.1 c -0.6,1.22 -1.46,1.87 -1.56,1.87 -0.06,0 -0.1,-0.04 -0.1,-0.1 0,-0.03 0,-0.05 0.19,-0.23 0.98,-0.98 1.55,-2.56 1.55,-4.64 0,-1.69 -0.37,-3.44 -1.61,-4.69 -0.13,-0.12 -0.13,-0.14 -0.13,-0.17 0,-0.06 0.04,-0.1 0.1,-0.1 0.1,0 1,0.67 1.59,1.93 0.51,1.1 0.63,2.2 0.63,3.03 z"
          font-size-adjust="none"
@@ -295,7 +296,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10294" /></g>
       <text
        id="text18342"
@@ -363,6 +364,7 @@ export default {
     var X0 = [0,0], dX = [0,0], z00=0.45, z0 = 0.45;;
     var el = that.el = {};
     var fnOnChange;
+    let layerOffset; // Shifts mouse x input by how far the pane on the left covers the screen, otherwise the input would be off
     var xScale, yScale;
   
     /* Defines functions mathematically.
@@ -486,7 +488,7 @@ export default {
     // This function runs when the page loads (see <body> tag in index.html)
     that.init = function () {
       // Create an array of the elements using their ids and getElementById
-      ["root", "graph", "function", "xAxis", "yAxis", "fx", "blob", "blob2", "lineExt", "deltaX"].map(
+      ["root", "graph", "function", "xAxis", "yAxis", "fx", "blob", "blob2", "lineExt", "deltaX", "pane"].map(
         function (id) {
           el[id] = document.getElementById(id);
         });
@@ -506,7 +508,6 @@ export default {
       el["graph"].style.cursor = "pointer";
       // Setting X0 twice? Might be a problem here?
       X0 = [el["blob"].getBBox().x + 207, el["blob"].getBBox().y];
-      //X0 = [el["blob2"].getBBox().x + 207, el["blob2"].getBBox().y];
   
       // Create mousePressed variable, set to false by default
       var mousePressed = false
@@ -521,7 +522,10 @@ export default {
         // Otherwise, set the cursor to grab mode
         el["graph"].style.cursor = "grabbing";
         // Find the position of the cursor
-        dX = [e.clientX - X0[0], e.clientY - X0[1]]
+        let paneWidth = el["pane"].getAttribute("style");
+        paneWidth = parseInt(paneWidth.substring(6, paneWidth.length - 3));
+        layerOffset = -paneWidth;
+        dX = [e.clientX - X0[0] + layerOffset, e.clientY - X0[1]] // +layerOffset adjusts mouse pos input for when the side pane is shown
         // Scale the x component of the mouse position between 0 and 1
         z0 = Math.min(Math.max(z00 + dX[0]/xScale, 0), 1 - el["deltaX"].valueAsNumber/xScale);
         // Redraw the graph
