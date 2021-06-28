@@ -1,26 +1,59 @@
 <template>
     <div>
         <iv-visualisation :title="pageName" :vue_config="vue_config" :page_number="2">
-            <body style="margin:0px; padding:0px; width: 100%; height: 100%;">
+            <template #hotspots>
+                            <iv-pane position="left" id="pane">
 
-<div id="limitDisplay" style="position: absolute; left: 640px; top: 80px; display: none;">
-   <img src="limitEquation.svg" style="position: absolute; left:0px; top: 100px; z-index: 1; -webkit-filter: invert(1);
-   filter: invert(1);"/>
-   
-   <h3 id="gradientDisplayVal2" style="position: absolute; left: 260px; top: 90px; color: white;"> 0 </h3> 
+                            </iv-pane>
 
-</div>
-<div id="gradientDisplay" style="position: absolute; left: 1350px; top: 80px;">
-   <!-- <h2> Gradient = </h2> -->
-   <img src="equationBlank.svg" style="position: absolute; left:0px; top: 100px; -webkit-filter: invert(1);
-   filter: invert(1);"/> 
-   <h3 style="position: absolute; left: 270px; top: 90px; color: white;"> = </h3>
-   <h3 id="gradientDisplayVal1" style="position: absolute; left: 290px; top: 90px; color: white;"> 0 </h3>
-   <h5 id="gradientDisplayValx1" style="position: absolute; left: 73px; top: 80px;  color: white;"> 0 </h5>
-   <h5 id="gradientDisplayValx2" style="position: absolute; left: 213px; top: 80px;  color: white;"> 0 </h5>
-   <h5 id="gradientDisplayValdx1" style="position: absolute; left: 130px; top: 80px;  color: white;"> 0 </h5>
-   <h5 id="gradientDisplayValdx2" style="position: absolute; left: 130px; top: 105px;  color: white;"> 0 </h5>
-</div>
+                            <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
+                                <div class="slidecontainer" style="float:right;">
+                                  Function: 
+                                  <select id="function" style="width:188px; padding:0px; margin: 0px;">
+                                    <option value="sin">Sin(x)</option>
+                                    <option value="exp">Exponential Decay</option>
+                                    <option value="tan">Tan(x)</option>
+                                    <option value="gauss">Gaussian</option>
+                                    <option value="parab">Parabola (2nd Order Polynomial)</option>
+                                    <!-- <option value="parabStep">Parabola with Step Function</option> -->
+                                    <option value="poly">Polynomial (6th Order)</option>
+                                  </select>
+                                  <br>
+                                  
+                                  <button style="margin-top: 15px;" type="button" id="animButton">Plot Derivative</button><br>
+                                  <input type="checkbox" id="checkbox" name="check" value="display" style="margin-top: 15px;">
+                                  <label for="checkbox"> Show link</label>                                  
+                                  <!-- Delta x:
+                                  <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;"> -->
+                                  <div id="limitDisplay" style="position: absolute; left: 640px; top: 80px; display: none;">
+                                    <img src="limitEquation.svg" style="position: absolute; left:0px; top: 100px; z-index: 1; -webkit-filter: invert(1);
+                                    filter: invert(1);"/>
+                                    
+                                    <h3 id="gradientDisplayVal2" style="position: absolute; left: 260px; top: 90px; color: white;"> 0 </h3> 
+
+                                  </div>
+                                  <div id="gradientDisplay" style="position: absolute; left: 1350px; top: 80px;">
+                                    <!-- <h2> Gradient = </h2> -->
+                                    <img src="equationBlank.svg" style="position: absolute; left:0px; top: 100px; -webkit-filter: invert(1);
+                                    filter: invert(1);"/> 
+                                    <h3 style="position: absolute; left: 270px; top: 90px; color: white;"> = </h3>
+                                    <h3 id="gradientDisplayVal1" style="position: absolute; left: 290px; top: 90px; color: white;"> 0 </h3>
+                                    <h5 id="gradientDisplayValx1" style="position: absolute; left: 73px; top: 80px;  color: white;"> 0 </h5>
+                                    <h5 id="gradientDisplayValx2" style="position: absolute; left: 213px; top: 80px;  color: white;"> 0 </h5>
+                                    <h5 id="gradientDisplayValdx1" style="position: absolute; left: 130px; top: 80px;  color: white;"> 0 </h5>
+                                    <h5 id="gradientDisplayValdx2" style="position: absolute; left: 130px; top: 105px;  color: white;"> 0 </h5>
+                                  </div>
+
+                                </div>
+                            </iv-toggle-hotspot>
+                        </template>
+
+
+
+
+            <body style="margin:0px; padding:0px; width: 100%;">
+
+
 
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
@@ -106,7 +139,7 @@
        orient="auto">
       <path 
          transform="scale(0.4) translate(7.4, 1)"
-         style="fill-rule:evenodd;stroke:white;stroke-width:1pt;stroke-opacity:1;fill:#5DFF33;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:black;stroke-width:1pt;stroke-opacity:1;fill:#5DFF33;fill-opacity:1"
          d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
          id="path9112" /> <!-- draws circles-->
     </marker>
@@ -118,7 +151,7 @@
        orient="auto">
       <path
          transform="scale(0.4)"
-         style="fill-rule:evenodd;stroke:#f0f5fa;stroke-width:1pt;stroke-opacity:1;fill:#f0f5fa;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:white;stroke-width:1pt;stroke-opacity:1;fill:white;fill-opacity:1"
          d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
          id="path7898" /> <!-- draws axes... or is it line between -->
     </marker>
@@ -130,12 +163,12 @@
        orient="auto">
       <path
          transform="scale(0.4)"
-         style="fill-rule:evenodd;stroke:#f0f5fa;stroke-width:1pt;stroke-opacity:1;fill:#f0f5fa;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:white;stroke-width:1pt;stroke-opacity:1;fill:white;fill-opacity:1"
          d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
          id="path7713" />
          <!-- The white arrow on the x-axis -->
     </marker>
-    <radialGradient
+    <!-- <radialGradient
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(-0.65523826,0,0,-0.6247619,1172.0929,131.92585)"
        r="280"
@@ -144,7 +177,7 @@
        cy="105.07805"
        cx="447.40897"
        id="radialGradient4581"
-       xlink:href="#linearGradient4579" />
+       xlink:href="#linearGradient4579" /> -->
     <linearGradient
        id="linearGradient4579">
       <stop
@@ -185,7 +218,7 @@
     <radialGradient
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(-1.7857144,-1.0178571,1.0178573,-1.7857143,301.27202,466.26987)"
-       r="750"
+       r="550"
        fy="105.078"
        fx="56.057446"
        cy="105.078"
@@ -196,7 +229,7 @@
        id="clipPath19347"
        clipPathUnits="userSpaceOnUse">
       <rect
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
+         style="color:white;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
          id="rect19349"
          width="528"
          height="394"
@@ -212,10 +245,10 @@
      transform="translate(-23.123835,-271.57211)"
      id="layer1">
     <rect
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
+       style="color:white;display:inline;overflow:hidden;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
        id="rect4573-0"
        width="100%"
-       height="100%"
+       height="10000"
        x="23.123835"
        y="221.57211" />
     <!--<rect
@@ -225,16 +258,16 @@
        height="0"
        width="0"
        id="rect7177"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />-->
-    <rect
-       style="fill: #7aaed7; stroke: black;"
+       style="color:white;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />-->
+    <!-- <rect
+       style="fill: #7aaed7; stroke: white;"
        id="right-side-pane"
        x="625"
        y="300"
        width="400"
        height="380"
        pathLength="2800"
-       transform="translate(0,-2)"/>
+       transform="translate(0,-2)"/> -->
     <g
        clip-path="url(#clipPath19347)"
        id="graph">
@@ -249,11 +282,11 @@
         <path
            id="yAxis"
            d="m 55.123835,689.57214 v -384"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
         <path
            id="xAxis"
            d="M 55.123835,497.57214 H 567.12383"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
       </g>
       <path
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#afdb85;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers"
@@ -262,19 +295,19 @@
          filter="url(#func)"/>
 
       <line
-         x1="-1000" y1="497.57214" x2="1300" y2="497.57214" transform="translate(0,0) rotate(0)" id="lineExt" style="stroke:#000000" stroke-width="2"/>
+         x1="-1000" y1="497.57214" x2="1300" y2="497.57214" transform="translate(0,0) rotate(0)" id="lineExt" style="stroke:black" stroke-width="2"/>
       <path
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker9114);marker-end:url(#marker9114);paint-order:stroke fill markers"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker9114);marker-end:url(#marker9114);paint-order:stroke fill markers"
          d="m 55.123835,497.57214 v 0"
          id="blob" /> <!-- line between two blobs-->
        <path
-         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker9114);marker-end:url(#marker9114);paint-order:stroke fill markers"
+         style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker9114);marker-end:url(#marker9114);paint-order:stroke fill markers"
          d="m 55.123835,497.57214 v 0"
          id="blob2" /> <!-- line between two of the blobs-->
       <!-- <circle cx="55.123835" cy="497.57214" r="10"/> The Origin of the axises -->
     </g>
     <g
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        ns0:preamble="/home/afp11/.config/inkscape/extensions/default_packages.tex"
        ns0:text="\\[\nx\n\\]"
        word-spacing="normal"
@@ -289,7 +322,7 @@
        transform="matrix(2.4000001,0,0,-2.4,-166.46648,2191.4404)"
        id="content">
        <path
-         style="fill:#f0f5fa;stroke-width:0"
+         style="fill:white;stroke-width:0"
          id="path10149"
          d="m 306.11,698.17 v 0.03 l 0.01,0.03 0.01,0.03 0.01,0.03 0.01,0.04 0.01,0.04 0.01,0.05 0.02,0.04 0.01,0.05 0.02,0.05 0.02,0.04 0.02,0.05 0.02,0.05 0.03,0.05 0.02,0.05 0.03,0.05 0.03,0.05 0.03,0.05 0.04,0.04 0.03,0.05 0.04,0.04 0.04,0.04 0.04,0.04 0.04,0.04 0.05,0.03 0.05,0.03 0.03,0.01 0.02,0.01 0.03,0.01 0.02,0.01 0.03,0.01 0.03,0.01 0.03,0.01 h 0.03 l 0.03,0.01 h 0.03 0.03 0.04 c 0.04,0 0.28,0 0.49,-0.13 -0.28,-0.05 -0.48,-0.3 -0.48,-0.53 0,-0.16 0.12,-0.35 0.38,-0.35 0.22,0 0.54,0.18 0.54,0.58 0,0.51 -0.59,0.65 -0.92,0.65 -0.58,0 -0.93,-0.53 -1.05,-0.75 -0.25,0.65 -0.79,0.75 -1.08,0.75 -1.04,0 -1.6,-1.28 -1.6,-1.53 0,-0.1 0.1,-0.1 0.11,-0.1 0.09,0 0.12,0.02 0.13,0.11 0.34,1.05 1,1.3 1.34,1.3 0.19,0 0.54,-0.09 0.54,-0.66 0,-0.31 -0.17,-0.98 -0.54,-2.37 -0.16,-0.61 -0.51,-1.03 -0.95,-1.03 -0.06,0 -0.29,0 -0.49,0.13 0.24,0.05 0.46,0.26 0.46,0.54 0,0.26 -0.22,0.34 -0.37,0.34 -0.29,0 -0.54,-0.26 -0.54,-0.57 0,-0.46 0.5,-0.66 0.93,-0.66 0.66,0 1.02,0.7 1.05,0.76 0.12,-0.37 0.48,-0.76 1.08,-0.76 1.02,0 1.59,1.28 1.59,1.53 0,0.1 -0.09,0.1 -0.12,0.1 -0.09,0 -0.11,-0.04 -0.13,-0.11 -0.33,-1.06 -1,-1.3 -1.32,-1.3 -0.39,0 -0.55,0.32 -0.55,0.65 0,0.22 0.06,0.44 0.17,0.88 z" />
       </g> <!-- The 'x' on the x-axis -->
@@ -307,7 +340,7 @@
        word-spacing="normal"
        ns0:text="\\[\nf(x)\n\\]"
        ns0:preamble="/home/afp11/.config/inkscape/extensions/default_packages.tex"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
        <path
          d="m 299.59,699.14 h 0.86 c 0.19,0 0.29,0 0.29,0.2 0,0.11 -0.1,0.11 -0.26,0.11 h -0.83 l 0.21,1.13 c 0.04,0.21 0.18,0.92 0.24,1.04 0.09,0.19 0.26,0.34 0.47,0.34 0.04,0 0.29,0 0.48,-0.18 -0.44,-0.04 -0.53,-0.39 -0.53,-0.54 0,-0.23 0.18,-0.35 0.36,-0.35 0.26,0 0.55,0.22 0.55,0.6 0,0.46 -0.46,0.68 -0.86,0.68 -0.34,0 -0.97,-0.18 -1.27,-1.16 -0.06,-0.21 -0.09,-0.31 -0.33,-1.56 h -0.69 c -0.19,0 -0.3,0 -0.3,-0.19 0,-0.12 0.09,-0.12 0.28,-0.12 h 0.66 l -0.75,-3.92 c -0.18,-0.96 -0.35,-1.87 -0.87,-1.87 -0.04,0 -0.28,0 -0.47,0.18 0.45,0.03 0.54,0.39 0.54,0.54 0,0.23 -0.18,0.34 -0.36,0.34 -0.26,0 -0.55,-0.21 -0.55,-0.59 0,-0.45 0.43,-0.69 0.84,-0.69 0.55,0 0.95,0.59 1.13,0.97 0.32,0.62 0.55,1.82 0.56,1.89 z"
          font-size-adjust="none"
@@ -318,7 +351,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10288" />
          <!-- the 'f' in 'f(x)' on the y-axis -->
          <path
@@ -331,7 +364,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10290" />
          <!-- The '(' in 'f(x)' on the y-axis -->
          <path
@@ -344,7 +377,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10292" />
          <!-- The 'x' in 'f(x)' on the y-axis -->
          <path
@@ -357,25 +390,25 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10294" />
          <!-- The ')' in 'f(x)' on the y-axis -->
       </g>
-      <g transform="translate(0,80)">
+      <!-- <g transform="translate(0,80)">
       <text
        id="text18342"
        y="257.57214"
        x="55.123837"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#f0f5fa;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        xml:space="preserve">
        <tspan
-         style="font-size:18.66666603px;text-align:start;text-anchor:start;fill:black;user-select:none;-moz-user-select: none;"
+         style="font-size:18.66666603px;text-align:start;text-anchor:start;fill:white;user-select:none;-moz-user-select: none;"
          y="272.57214"
          x="660.123837"
          id="tspan18340">Function</tspan>
-      </text>
+      </text> -->
       <!-- 'Function' next to the function select box-->
-      <foreignObject
+      <!-- <foreignObject
        y="255.90814"
        x="760.80826"
        height="32"
@@ -387,9 +420,9 @@
         <option value="exp">Exponential Decay</option>
         <option value="tan">Tan(x)</option>
         <option value="gauss">Gaussian</option>
-        <option value="parab">Parabola (2nd Order Polynomial)</option>
+        <option value="parab">Parabola (2nd Order Polynomial)</option> -->
         <!-- <option value="parabStep">Parabola with Step Function</option> -->
-        <option value="poly">Polynomial (6th Order)</option>
+        <!-- <option value="poly">Polynomial (6th Order)</option>
        </select>
        <div class="slidecontainer">
        </div>
@@ -397,7 +430,7 @@
        <input type="checkbox" id="checkbox" name="check" value="display" style="margin-top: 15px;">
        <label for="checkbox"> Show link</label>
       </foreignObject>
-      </g>
+      </g> -->
     <!-- The function select box -->
     
   </g>
@@ -405,7 +438,7 @@
      transform="translate(-23.123835,200)"
      id="layer2">
     <rect
-       style="color:#000000;display:inline;overflow:visible;visibility:hidden;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
+       style="color:white;display:inline;overflow:visible;visibility:hidden;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
        id="rect4573-0-1"
        width="570"
        height="400"
@@ -419,7 +452,7 @@
        height="0"
        width="0"
        id="rect7177-1"
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />
+       style="color:white;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />
     <g
        clip-path="url(#clipPath19347)"
        id="graph1"
@@ -435,11 +468,11 @@
         <path
            id="yAxis-1"
            d="m 55.123835,689.57214 v -384"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#marker7900);paint-order:stroke fill markers" />
         <path
            id="xAxis-1"
            d="M 55.123835,497.57214 H 567.12383"
-           style="opacity:1;vector-effect:none;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#f0f5fa;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
+           style="opacity:1;vector-effect:none;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-end:url(#TriangleOutM);paint-order:stroke fill markers" />
       </g>
       <path
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#afdb85;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;marker:none;paint-order:stroke fill markers"
@@ -451,7 +484,7 @@
     </g>
     <path marker-start="url(#marker9114)" d="M 361.6 377 L 361.5 350" clip-path="url(#reveal)" id="discont" visibility="hidden"></path>
     <g
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        ns0:preamble="/home/afp11/.config/inkscape/extensions/default_packages.tex"
        ns0:text="\\[\nx\n\\]"
        word-spacing="normal"
@@ -466,7 +499,7 @@
        transform="matrix(2.4000001,0,0,-2.4,-166.46648,2191.4404) translate(0,28)"
        id="content-1">
        <path
-         style="fill:#f0f5fa;stroke-width:0"
+         style="fill:white;stroke-width:0"
          id="path10149-1"
          d="m 306.11,698.17 v 0.03 l 0.01,0.03 0.01,0.03 0.01,0.03 0.01,0.04 0.01,0.04 0.01,0.05 0.02,0.04 0.01,0.05 0.02,0.05 0.02,0.04 0.02,0.05 0.02,0.05 0.03,0.05 0.02,0.05 0.03,0.05 0.03,0.05 0.03,0.05 0.04,0.04 0.03,0.05 0.04,0.04 0.04,0.04 0.04,0.04 0.04,0.04 0.05,0.03 0.05,0.03 0.03,0.01 0.02,0.01 0.03,0.01 0.02,0.01 0.03,0.01 0.03,0.01 0.03,0.01 h 0.03 l 0.03,0.01 h 0.03 0.03 0.04 c 0.04,0 0.28,0 0.49,-0.13 -0.28,-0.05 -0.48,-0.3 -0.48,-0.53 0,-0.16 0.12,-0.35 0.38,-0.35 0.22,0 0.54,0.18 0.54,0.58 0,0.51 -0.59,0.65 -0.92,0.65 -0.58,0 -0.93,-0.53 -1.05,-0.75 -0.25,0.65 -0.79,0.75 -1.08,0.75 -1.04,0 -1.6,-1.28 -1.6,-1.53 0,-0.1 0.1,-0.1 0.11,-0.1 0.09,0 0.12,0.02 0.13,0.11 0.34,1.05 1,1.3 1.34,1.3 0.19,0 0.54,-0.09 0.54,-0.66 0,-0.31 -0.17,-0.98 -0.54,-2.37 -0.16,-0.61 -0.51,-1.03 -0.95,-1.03 -0.06,0 -0.29,0 -0.49,0.13 0.24,0.05 0.46,0.26 0.46,0.54 0,0.26 -0.22,0.34 -0.37,0.34 -0.29,0 -0.54,-0.26 -0.54,-0.57 0,-0.46 0.5,-0.66 0.93,-0.66 0.66,0 1.02,0.7 1.05,0.76 0.12,-0.37 0.48,-0.76 1.08,-0.76 1.02,0 1.59,1.28 1.59,1.53 0,0.1 -0.09,0.1 -0.12,0.1 -0.09,0 -0.11,-0.04 -0.13,-0.11 -0.33,-1.06 -1,-1.3 -1.32,-1.3 -0.39,0 -0.55,0.32 -0.55,0.65 0,0.22 0.06,0.44 0.17,0.88 z" />
       </g> <!-- The 'x' on the x-axis -->
@@ -484,7 +517,7 @@
        word-spacing="normal"
        ns0:text="\\[\nf(x)\n\\]"
        ns0:preamble="/home/afp11/.config/inkscape/extensions/default_packages.tex"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">
        <path
          d="m 299.59,699.14 h 0.86 c 0.19,0 0.29,0 0.29,0.2 0,0.11 -0.1,0.11 -0.26,0.11 h -0.83 l 0.21,1.13 c 0.04,0.21 0.18,0.92 0.24,1.04 0.09,0.19 0.26,0.34 0.47,0.34 0.04,0 0.29,0 0.48,-0.18 -0.44,-0.04 -0.53,-0.39 -0.53,-0.54 0,-0.23 0.18,-0.35 0.36,-0.35 0.26,0 0.55,0.22 0.55,0.6 0,0.46 -0.46,0.68 -0.86,0.68 -0.34,0 -0.97,-0.18 -1.27,-1.16 -0.06,-0.21 -0.09,-0.31 -0.33,-1.56 h -0.69 c -0.19,0 -0.3,0 -0.3,-0.19 0,-0.12 0.09,-0.12 0.28,-0.12 h 0.66 l -0.75,-3.92 c -0.18,-0.96 -0.35,-1.87 -0.87,-1.87 -0.04,0 -0.28,0 -0.47,0.18 0.45,0.03 0.54,0.39 0.54,0.54 0,0.23 -0.18,0.34 -0.36,0.34 -0.26,0 -0.55,-0.21 -0.55,-0.59 0,-0.45 0.43,-0.69 0.84,-0.69 0.55,0 0.95,0.59 1.13,0.97 0.32,0.62 0.55,1.82 0.56,1.89 z"
          font-size-adjust="none"
@@ -495,7 +528,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10288-1" />
          <!-- the 'f' in 'f(x)' on the y-axis -->
        <path
@@ -508,7 +541,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10290-1" />
          <!-- The '(' in 'f(x)' on the y-axis -->
          <path
@@ -521,7 +554,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10292-1" />
          <!-- The 'x' in 'f(x)' on the y-axis -->
          <path
@@ -534,7 +567,7 @@
          letter-spacing="normal"
          stroke-miterlimit="10.433"
          word-spacing="normal"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#f0f5fa;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10294-1" />
          <!-- The ')' in 'f(x)' on the y-axis -->
       </g>
@@ -580,6 +613,7 @@ export default {
     const override = new Event('animationend');
     let minVal;
     let clicked;
+    let layerOffset; // Shifts mouse x input by how far the pane on the left covers the screen, otherwise the input would be off
 
     /* Defines functions mathematically.
       These functions have been scaled - presumably for aesthetic reasons
@@ -784,7 +818,7 @@ export default {
 
       // Create an array of the elements using their ids and getElementById
       ["root", "graph", "function", "xAxis", "yAxis", "xAxis-1", "yAxis-1", "fx", "fx-1", "blob", "blob2", "lineExt", "animButton", "rect", "duration", "lineExt2", "gradientDisplayVal1",
-      "gradientDisplayVal2","gradientDisplayValx1", "gradientDisplayValx2", "gradientDisplayValdx1","gradientDisplayValdx2", "limitDisplay", "gradientDisplay", "func", "checkbox"].map(
+      "gradientDisplayVal2","gradientDisplayValx1", "gradientDisplayValx2", "gradientDisplayValdx1","gradientDisplayValdx2", "limitDisplay", "gradientDisplay", "func", "checkbox", "pane"].map(
 
         function (id) {
           el[id] = document.getElementById(id);
@@ -829,7 +863,10 @@ export default {
         // Otherwise, set the cursor to grab mode
         el["graph"].style.cursor = "grabbing";
         // Find the position of the cursor
-        dX = [e.clientX - X0[0], e.clientY - X0[1]]
+        let paneWidth = el["pane"].getAttribute("style");
+        paneWidth = parseInt(paneWidth.substring(6, paneWidth.length - 3));
+        layerOffset = -paneWidth;
+        dX = [e.clientX - X0[0] + layerOffset, e.clientY - X0[1]] // +layerOffset adjusts mouse pos input for when the side pane is shown
         // Scale the x component of the mouse position between 0 and 1
         z0 = Math.min(Math.max(z00 + dX[0]/xScale, 0), 1);
         // Redraw the graph
@@ -901,8 +938,4 @@ export default {
                 width: var(--axis-width);
             }
         }
-        /* body{
-            transform: scale(0.87);
-            transform-origin: 0 0;
-        } */
       </style>
