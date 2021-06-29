@@ -4,7 +4,7 @@
             <template #hotspots>
                 <iv-pane position="left" id="pane">
                   <iv-sidebar-content>
-                    <iv-sidebar-section title="Theory" :highlight="true" icon="">
+                    <iv-sidebar-section title="Theory" :highlight="true">
                       <p>
                       Here is an interactive graph plot that allows you change the function and Delta x between the two distinct
 points on the graph.
