@@ -819,12 +819,6 @@ export default {
       var gradient = ((fns[fn](z0 + zOffset) - fns[fn](z0))/zOffset)/18.8;
       
       vm.derivDisp = gradient.toFixed(2).toString();
-      el["gradientDisplayVal1"].innerHTML = gradient.toFixed(3).toString();
-      el["gradientDisplayVal2"].innerHTML = gradient.toFixed(3).toString();
-      el["gradientDisplayValx1"].innerHTML = (z0 * 6 * Math.PI).toFixed(3).toString();
-      el["gradientDisplayValx2"].innerHTML = (z0 * 6 * Math.PI).toFixed(3).toString();
-      el["gradientDisplayValdx1"].innerHTML =  (zOffset * 6 * Math.PI).toFixed(3).toString();
-      el["gradientDisplayValdx2"].innerHTML =  (zOffset * 6 * Math.PI).toFixed(3).toString();
     };
   
     // This function runs when the page loads (see <body> tag in index.html)
