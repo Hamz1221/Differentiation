@@ -30,7 +30,7 @@
                 </iv-pane>
 
                   <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px;" transparent>
-                        <div style="border-top:200px; width:300px; height:0px;" v-if="deltaDist !== '0.00'">
+                        <div style="border-top:200px;" v-if="deltaDist !== '0.00'">
                           <img src="../assets/equationBlank.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">= {{derivDisp}}</p>
                           <p style="position: relative; left:813px; top:-8px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
@@ -73,7 +73,7 @@
                   
                  </iv-toggle-hotspot>
             </template>
-    <div>
+    
 <body style="margin:0px; padding:0px; width: 100%;">
 
 <svg
@@ -355,7 +355,7 @@
          id="tspan18341">Delta x</tspan>
       </text> -->
    
-    <foreignObject
+    <!-- <foreignObject
        y="290.90814"
        x="785.80826"
        height="32"
@@ -363,7 +363,7 @@
        style="overflow:visible;"
        id="foFunction">
        
-    </foreignObject>
+    </foreignObject> -->
   </g>
   <!-- <text id="initText" text-anchor="middle" width="500px" x="50%" y="250" style="fill: white; font-family: Helvetica, Nimbus Sans L, Arial, sans-serif; font-weight: bold; font-size: 24pt;">Click to begin…</text> -->
 
@@ -375,7 +375,7 @@
 </div>-->
 
 </body>
-</div>
+
 </iv-visualisation>
     </div>
 </template>
@@ -620,13 +620,12 @@ export default {
 }
 </script>
 <style>
-        /* body, svg{
+          body, svg{
           height: 100%;
-          width: 100%;
+          min-height: 500px;
           overflow: hidden;
         }
-        template{
-          overflow:hidden;
-        } */
+
+
 
 </style>
