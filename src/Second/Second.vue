@@ -6,6 +6,13 @@
 
                             </iv-pane>
 
+                            <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px" transparent>
+                                  <div style="border-top:200px;">
+                                    <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
+                                    <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
+                                  </div>
+                            </iv-fixed-hotspot>
+
                             <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
                                 <div class="slidecontainer" style="float:right;">
                                   Function: 
@@ -25,24 +32,11 @@
                                   <label for="checkbox"> Show link</label>                                  
                                   <!-- Delta x:
                                   <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;"> -->
-                                  <div id="limitDisplay" style="position: absolute; left: 640px; top: 80px; display: none;">
-                                    <img src="limitEquation.svg" style="position: absolute; left:0px; top: 100px; z-index: 1; -webkit-filter: invert(1);
-                                    filter: invert(1);"/>
-                                    
-                                    <h3 id="gradientDisplayVal2" style="position: absolute; left: 260px; top: 90px; color: white;"> 0 </h3> 
+                                  
+                                  <!-- <iv-equation-box equation="f(x)=lim_{\delta x \to 0} \frac{f(x - \delta x)}{\delta x} = \qquad">hi</iv-equation-box> -->
 
-                                  </div>
-                                  <div id="gradientDisplay" style="position: absolute; left: 1350px; top: 80px;">
-                                    <!-- <h2> Gradient = </h2> -->
-                                    <img src="equationBlank.svg" style="position: absolute; left:0px; top: 100px; -webkit-filter: invert(1);
-                                    filter: invert(1);"/> 
-                                    <h3 style="position: absolute; left: 270px; top: 90px; color: white;"> = </h3>
-                                    <h3 id="gradientDisplayVal1" style="position: absolute; left: 290px; top: 90px; color: white;"> 0 </h3>
-                                    <h5 id="gradientDisplayValx1" style="position: absolute; left: 73px; top: 80px;  color: white;"> 0 </h5>
-                                    <h5 id="gradientDisplayValx2" style="position: absolute; left: 213px; top: 80px;  color: white;"> 0 </h5>
-                                    <h5 id="gradientDisplayValdx1" style="position: absolute; left: 130px; top: 80px;  color: white;"> 0 </h5>
-                                    <h5 id="gradientDisplayValdx2" style="position: absolute; left: 130px; top: 105px;  color: white;"> 0 </h5>
-                                  </div>
+                                  
+
 
                                 </div>
                             </iv-toggle-hotspot>
@@ -589,15 +583,20 @@ export default {
     data(){
         return {
             pageName:"Second",
+            derivDisp: 1,
             vue_config
         }
     },
     mounted(){
+    let vm = this;
         var MODULE = (function () {
     "use strict";
     var that = {},
       t = 0, T = 1, f = 60,
       ivl, iFn, lastFrame;
+
+
+
     var fn=sessionStorage.getItem("funcType") || "exp", oldfn=sessionStorage.getItem("funcType") || "exp", p=1; // Default: start with sine if there is no value for "funcType"
     // c, o, t used for taylor series
     var c1=1, c2=0, c3=0; // current c0 etc.
@@ -792,25 +791,17 @@ export default {
       el["lineExt2"].setAttribute("transform", `translate(${((x0+xScale*z0)+(x0+xScale*z0 + xOffset))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(90, ${xDiff}, ${y0})`);
       el["lineExt2"].setAttribute("x2", `${excess}`);
 
-      if(xOffset == 0.0001){
-        el["gradientDisplay"].style.display = "none";
-        el["limitDisplay"].style.display = "initial";
-      }
-      else{
-        el["gradientDisplay"].style.display = "initial";
-        el["limitDisplay"].style.display = "none";
-      }
-
       // Display value of gradient
       var zOffset = xOffset/xScale;
       var gradient = ((fns[fn](z0 + zOffset) - fns[fn](z0))/zOffset)/18.8;
+      
+      vm.derivDisp = gradient.toFixed(2).toString();
       el["gradientDisplayVal1"].innerHTML = gradient.toFixed(3).toString();
       el["gradientDisplayVal2"].innerHTML = gradient.toFixed(3).toString();
       el["gradientDisplayValx1"].innerHTML = (z0 * 6 * Math.PI).toFixed(3).toString();
       el["gradientDisplayValx2"].innerHTML = (z0 * 6 * Math.PI).toFixed(3).toString();
       el["gradientDisplayValdx1"].innerHTML =  (zOffset * 6 * Math.PI).toFixed(3).toString();
       el["gradientDisplayValdx2"].innerHTML =  (zOffset * 6 * Math.PI).toFixed(3).toString();
-
     };
   
     // This function runs when the page loads (see <body> tag in index.html)
@@ -917,8 +908,13 @@ export default {
     };
   
     return that;
+
+
+
   }());
   MODULE.init();
+
+
     }
 }
 </script>

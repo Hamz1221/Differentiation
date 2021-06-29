@@ -6,6 +6,17 @@
                   <iv-sidebar-section title="Theory"></iv-sidebar-section>
                 </iv-pane>
 
+                  <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px;" transparent>
+                        <div style="border-top:200px; width:300px; height:0px;">
+                          <img src="../assets/equationBlankOrig.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
+                          <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">= {{derivDisp}}</p>
+                          <p style="position: relative; left:813px; top:-8px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
+                          <p style="position: relative; left:675px; top:-42px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
+                          <p style="position: relative; left:730px; top:-78px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
+                          <p style="position: relative; left:750px; top:-86px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
+                        </div>
+                  </iv-fixed-hotspot>
+
                  <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
                     <div class="slidecontainer" style="float:right;">
                       Function: 
@@ -347,10 +358,15 @@ export default {
     data(){
         return {
             pageName:"First",
+            derivDisp: 0.5,
+            xValDisp: 0.4,
+            deltaDist: 0.1,
             vue_config
         }
     },
     mounted(){
+    let vm = this;
+    
         var MODULE = (function () {
     "use strict";
     var that = {},
@@ -483,6 +499,15 @@ export default {
       const xDiff = (parseFloat(el["lineExt"].getAttribute('x1')) + parseFloat(el["lineExt"].getAttribute("x2"))) / 2;
 
       el["lineExt"].setAttribute("transform", `translate(${((x0+xScale*z0)+(blob2Xpos))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);      
+
+      // Display value of gradient
+      var zOffset = xOffset/xScale;
+      var gradient = ((fns[fn](z0 + zOffset) - fns[fn](z0))/zOffset)/18.8;
+      
+      vm.derivDisp = gradient.toFixed(2).toString();
+      vm.xValDisp = (z0 * 6 * Math.PI).toFixed(2).toString();
+      vm.deltaDist = (zOffset * 6 * Math.PI).toFixed(2).toString();
+    
     };
   
     // This function runs when the page loads (see <body> tag in index.html)
