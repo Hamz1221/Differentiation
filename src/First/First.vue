@@ -30,13 +30,18 @@
                 </iv-pane>
 
                   <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px;" transparent>
-                        <div style="border-top:200px; width:300px; height:0px;">
+                        <div style="border-top:200px; width:300px; height:0px;" v-if="deltaDist !== '0.00'">
                           <img src="../assets/equationBlankOrig.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">= {{derivDisp}}</p>
                           <p style="position: relative; left:813px; top:-8px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
                           <p style="position: relative; left:675px; top:-42px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
                           <p style="position: relative; left:730px; top:-78px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
                           <p style="position: relative; left:750px; top:-86px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
+                        </div>
+
+                        <div style="border-top:200px;" v-if="deltaDist == '0.00'">
+                          <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
+                          <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
                         </div>
                   </iv-fixed-hotspot>
 
@@ -530,7 +535,6 @@ export default {
       vm.derivDisp = gradient.toFixed(2).toString();
       vm.xValDisp = (z0 * 6 * Math.PI).toFixed(2).toString();
       vm.deltaDist = (zOffset * 6 * Math.PI).toFixed(2).toString();
-    
     };
   
     // This function runs when the page loads (see <body> tag in index.html)
