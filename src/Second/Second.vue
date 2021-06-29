@@ -30,7 +30,7 @@
                </iv-pane>
 
                             <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px" transparent>
-                                  <div style="border-top:200px;">
+                                  <div style="border-top:200px; height:50px; width:100px;">
                                     <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                                     <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
                                   </div>
@@ -82,7 +82,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    id="root"
-   height="850"
+   height="96vh"
    width="100%">
    <!--when I change height to 100%, the graphs are cut off- not sure why-->
    <defs>
@@ -964,10 +964,5 @@ export default {
             to {
                 width: var(--axis-width);
             }
-        }
-        body, svg{
-          height: 100%;
-          min-height: 850px;
-          overflow: hidden;
         }
       </style>

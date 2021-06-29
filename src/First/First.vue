@@ -30,7 +30,7 @@
                 </iv-pane>
 
                   <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px;" transparent>
-                        <div style="border-top:200px;" v-if="deltaDist !== '0.00'">
+                        <div style="border-top:200px; height:50px; width:100px;" v-if="deltaDist !== '0.00'">
                           <img src="../assets/equationBlank.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">= {{derivDisp}}</p>
                           <p style="position: relative; left:813px; top:-8px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
@@ -39,7 +39,7 @@
                           <p style="position: relative; left:750px; top:-86px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
                         </div>
 
-                        <div style="border-top:200px;" v-if="deltaDist == '0.00'">
+                        <div style="border-top:200px; height:50px; width:100px;" v-if="deltaDist == '0.00'">
                           <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
                         </div>
@@ -74,7 +74,7 @@
                  </iv-toggle-hotspot>
             </template>
     
-<body style="margin:0px; padding:0px; width: 100%;">
+<body style="margin:0px; padding:0px; width: 100%; overflow:hidden;">
 
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
@@ -86,8 +86,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    version="1.1"
    id="root"
-   height="673" 
+   height="96vh" 
    width="100%"
+   style="overflow:hidden"
    >
    <!-- h=500, w-570 -->
   <defs
@@ -620,12 +621,5 @@ export default {
 }
 </script>
 <style>
-          body, svg{
-          height: 100%;
-          min-height: 500px;
-          overflow: hidden;
-        }
-
-
 
 </style>
