@@ -951,4 +951,9 @@ export default {
                 width: var(--axis-width);
             }
         }
+        body, svg{
+          height: 100%;
+          min-height: 850px;
+          overflow: hidden;
+        }
       </style>

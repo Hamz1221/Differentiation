@@ -69,7 +69,7 @@
                  </iv-toggle-hotspot>
             </template>
     <div>
-<body style="overflow: hidden; margin: 0; position:relative" id="body">
+<body style="margin:0px; padding:0px; width: 100%;">
 
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
@@ -198,7 +198,7 @@
        style="color:white;display:inline;overflow:hidden;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581-1);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;paint-order:stroke fill markers;enable-background:accumulate"
        id="rect4573-0"
        width="100%"
-       height="1000000"
+       height="10000"
        x="23.123835"
        y="221.57211" />
     <!--<rect
@@ -504,9 +504,9 @@ export default {
       el["fx"].setAttribute("d", fxStr);
       el["blob"].setAttribute("d", "M " + (x0+xScale*z0) + "," + y0 + " L " + (x0+xScale*z0) + "," + (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)) ));
       let blob2Xpos = x0+xScale*z0 + xOffset;
-      if (blob2Xpos >= 567.123735){
-          blob2Xpos = 567.123735;
-          el["deltaX"].value = `${567.123735 - (x0+xScale*z0)}`
+      if (blob2Xpos >= 567.123735 + 0.0001){
+          blob2Xpos = 567.123735 + 0.0001;
+          el["deltaX"].value = `${567.123735 + 0.0001 - (x0+xScale*z0)}`
           xOffset = el["deltaX"].valueAsNumber; 
       }
       el["blob2"].setAttribute("d", "M " + (blob2Xpos) + "," + y0 + " L " + (blob2Xpos) + "," + (y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale)) ));
@@ -615,10 +615,14 @@ export default {
     }
 }
 </script>
-<style scoped>
- .iv-pane .iv-pane-navigator{
-   background: black;
-   box-shadow: none;
- }
+<style>
+        /* body, svg{
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+        }
+        template{
+          overflow:hidden;
+        } */
 
 </style>
