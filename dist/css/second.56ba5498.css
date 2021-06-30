@@ -1,0 +1,1 @@
+:root{--animDuration:1s;--axis-width:512px}.full{width:var(--axis-width)}.r{-webkit-animation:move var(--animDuration) linear;animation:move var(--animDuration) linear}@-webkit-keyframes move{to{width:var(--axis-width)}}@keyframes move{to{width:var(--axis-width)}}body,svg{height:100%;min-height:850px;overflow:hidden}
