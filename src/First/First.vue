@@ -4,7 +4,7 @@
             <template #hotspots>
                 <iv-pane position="left" id="pane">
                   <iv-sidebar-content>
-
+                      <div  style="padding-left:10px; padding-right:10px;">
                       <p>
                       Here is an interactive graph plot that allows you change the function and Delta x between the two distinct
 points on the graph.
@@ -22,13 +22,13 @@ each and every new point it covers.
 delta x is close to 0, but never actually 0, the equation becomes a limit equation, calculating the true
 value of the gradient at that point.
                       </p>
-    
+                      </div>
 
                   </iv-sidebar-content>
                 </iv-pane>
 
                   <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px;" transparent>
-                        <div style="border-top:200px; height:50px; width:100px;" v-if="deltaDist !== '0.00'">
+                        <div style="border-top:200px; height:50px; width:200px;" v-if="deltaDist !== '0.00'">
                           <img src="../assets/equationBlank.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">= {{derivDisp}}</p>
                           <p style="position: relative; left:813px; top:-8px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{xValDisp}}</p>
@@ -37,7 +37,7 @@ value of the gradient at that point.
                           <p style="position: relative; left:750px; top:-86px; -webkit-filter: invert(1); filter: invert(1); font-size: 12pt;">{{deltaDist}}</p>
                         </div>
 
-                        <div style="border-top:200px; height:50px; width:100px;" v-if="deltaDist == '0.00'">
+                        <div style="border-top:200px; height:50px; width:200px;" v-if="deltaDist == '0.00'">
                           <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
                           <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
                         </div>
@@ -52,7 +52,6 @@ value of the gradient at that point.
                         <option value="tan">Tan(x)</option>
                         <option value="gauss">Gaussian</option>
                         <option value="parab">Parabola (2nd Order Polynomial)</option>
-                        <!-- <option value="parabStep">Parabola with Step Function</option> -->
                         <option value="poly">Polynomial (6th Order)</option>
                       </select>
                       <br>
@@ -60,15 +59,7 @@ value of the gradient at that point.
 
                       Delta x:
                       <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;">
-                    
-
-                    
-
                     </div>
-
-                    
-  
-                  
                  </iv-toggle-hotspot>
             </template>
     
@@ -86,9 +77,8 @@ value of the gradient at that point.
    id="root"
    height="96vh" 
    width="100%"
-   style="overflow:hidden"
-   >
-   <!-- h=500, w-570 -->
+   style="overflow:hidden">
+
   <defs
      id="defs4">
     <marker
@@ -205,23 +195,6 @@ value of the gradient at that point.
        height="10000"
        x="23.123835"
        y="221.57211" />
-    <!--<rect
-       transform="translate(23.123835,221.57211)"
-       y="0"
-       x="0"
-       height="0"
-       width="0"
-       id="rect7177"
-       style="color:white;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />-->
-    <!-- <rect
-       style="fill: #7aaed7; stroke: black;"
-       id="right-side-pane"
-       x="650"
-       y="250"
-       width="400"
-       height="500"
-       pathLength="2800"
-       transform="translate(0,-2)"/>   -->
     <g
        clip-path="url(#clipPath19347)"
        id="graph">
@@ -247,7 +220,7 @@ value of the gradient at that point.
          d="M 55.123835,497.57214 H 567.12383"
          id="fx" />
       <line
-         x1="-1000" y1="497.57214" x2="1300" y2="497.57214" transform="translate(0,0) rotate(0)" id="lineExt" style="stroke:#ff0505" stroke-width="2"/>
+         x1="-1000" y1="497.57214" x2="13000" y2="497.57214" transform="translate(0,0) rotate(0)" id="lineExt" style="stroke:#ff0505" stroke-width="2"/>
          <!-- This is the line that is the extension of the line between the two points -->
       <path
          style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker9114);marker-end:url(#marker9114);paint-order:stroke fill markers"
@@ -336,47 +309,11 @@ value of the gradient at that point.
          word-spacing="normal"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:white;fill-opacity:1;fill-rule:evenodd;stroke:white;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.43299961;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="path10294" /></g>
-      <!-- <text
-       id="text18342"
-       y="257.57214"
-       x="55.123837"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#f0f5fa;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       xml:space="preserve">
-       <tspan
-         style="font-size:18.66666603px;text-align:start;text-anchor:start;fill:black;user-select:none;-moz-user-select: none;"
-         y="307.57214"
-         x="685.123837"
-         id="tspan18340">Function</tspan>
-      <tspan
-         style="font-size:18.66666603px;text-align:start;text-anchor:start;fill:black;user-select:none;-moz-user-select: none;"  
-         y="342.57214"
-         x="685.123837"
-         id="tspan18341">Delta x</tspan>
-      </text> -->
-   
-    <!-- <foreignObject
-       y="290.90814"
-       x="785.80826"
-       height="32"
-       width="192"
-       style="overflow:visible;"
-       id="foFunction">
-       
-    </foreignObject> -->
   </g>
-  <!-- <text id="initText" text-anchor="middle" width="500px" x="50%" y="250" style="fill: white; font-family: Helvetica, Nimbus Sans L, Arial, sans-serif; font-weight: bold; font-size: 24pt;">Click to begin…</text> -->
-
 </svg>
-
-<!--<div class="slidecontainer">
-   <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax">
-   <label for="deltax">Delta x</label>
-</div>-->
-
 </body>
-
 </iv-visualisation>
-    </div>
+</div>
 </template>
 <script>
 import vue_config from '../../vue.config.js'
@@ -400,15 +337,18 @@ export default {
       t = 0, T = 1, f = 60,
       ivl, iFn, lastFrame;
     var fn=sessionStorage.getItem("funcType") || "exp", oldfn=sessionStorage.getItem("funcType") || "exp", p=1; // Default: start with sine if there is no value for "funType"
+    var z0 = parseFloat(sessionStorage.getItem("z0")) || 0.45;
     // c, o, t used for taylor series
     var c1=1, c2=0, c3=0; // current c0 etc.
     var o1=1, o2=0, o3=0; // old c0 etc.
     var t1=1, t2=0, t3=0; // target c0 etc.
-    var X0 = [0,0], dX = [0,0], z00=0.45, z0 = 0.45;;
+    var X0 = [0,0], dX = [0,0], z00=0.45;;
     var el = that.el = {};
     var fnOnChange;
     let layerOffset; // Shifts mouse x input by how far the pane on the left covers the screen, otherwise the input would be off
     var xScale, yScale;
+    const minDeltaX = 0.0001;
+    const xMax = 567.123735;
   
     /* Defines functions mathematically.
       These functions have been scaled - presumably for aesthetic reasons
@@ -428,9 +368,6 @@ export default {
       },
       "parab" : function (z) {
         return 20*(z-0.5)*(z-0.5)-2.5;
-      },
-      "parabStep" : function (z) {
-        return 20*(z-0.5)*(z-0.5)-2.5 + ((z<0.6)?0:2);
       },
       "poly" : function (x) {
         return ((8*(x-0.5))**6/6 - 3*(8*(x-0.5))**4 - 2*(8*(x-0.5))**3/3 + 27*(8*(x-0.5))**2/2 + 18*(8*(x-0.5)) - 30) / 100*3;
@@ -506,37 +443,42 @@ export default {
       }
 
       el["fx"].setAttribute("d", fxStr);
-      el["blob"].setAttribute("d", "M " + (x0+xScale*z0) + "," + y0 + " L " + (x0+xScale*z0) + "," + (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)) ));
-      let blob2Xpos = x0+xScale*z0 + xOffset;
-      if (blob2Xpos >= 567.123735 + 0.0001){
-          blob2Xpos = 567.123735 + 0.0001;
-          el["deltaX"].value = `${567.123735 + 0.0001 - (x0+xScale*z0)}`
+
+      let blobX = x0+xScale*z0;
+      let blob2X = blobX + xOffset;
+      let blobY = y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0));
+      let blob2Y = y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale));
+
+      el["blob"].setAttribute("d", "M " + (blobX) + "," + y0 + " L " + (blobX) + "," + (blobY ));
+      if (blob2X >= xMax + minDeltaX){
+          blob2X = xMax + minDeltaX;
+          el["deltaX"].value = `${xMax + minDeltaX - (blobX)}`
           xOffset = el["deltaX"].valueAsNumber; 
       }
-      el["blob2"].setAttribute("d", "M " + (blob2Xpos) + "," + y0 + " L " + (blob2Xpos) + "," + (y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale)) ));
+      el["blob2"].setAttribute("d", "M " + (blob2X) + "," + y0 + " L " + (blob2X) + "," + (blob2Y ));
 
       // Change line style when not at exact derivative 
-      if(xOffset === 0.0001){
+      if(xOffset === minDeltaX){
         el["lineExt"].setAttribute("stroke-dasharray", "0") 
       } else{
         el["lineExt"].setAttribute("stroke-dasharray", "8 3") 
       }
 
-      let angle = Math.atan2((y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))) - (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0))), (blob2Xpos) - (x0+xScale*z0)) * 180 / Math.PI;
+      let angle = Math.atan2((blob2Y) - (blobY), (blob2X) - (blobX)) * 180 / Math.PI;
       const xDiff = (parseFloat(el["lineExt"].getAttribute('x1')) + parseFloat(el["lineExt"].getAttribute("x2"))) / 2;
 
-      el["lineExt"].setAttribute("transform", `translate(${((x0+xScale*z0)+(blob2Xpos))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);      
+      el["lineExt"].setAttribute("transform", `translate(${((blobX)+(blob2X))/2 - xDiff}, ${((blobY)+(blob2Y))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);      
 
       // Display value of gradient
       var zOffset = xOffset/xScale;
       var gradient = ((fns[fn](z0 + zOffset) - fns[fn](z0))/zOffset)/18.8;
       
-      vm.derivDisp = gradient.toFixed(2).toString();
+      vm.derivDisp = gradient.toFixed(2).toString() + " (2dp)";
       vm.xValDisp = (z0 * 6 * Math.PI).toFixed(2).toString();
       vm.deltaDist = (zOffset * 6 * Math.PI).toFixed(2).toString();
     };
   
-    // This function runs when the page loads (see <body> tag in index.html)
+    // This function runs when MODULE.init() is called
     that.init = function () {
       // Create an array of the elements using their ids and getElementById
       ["root", "graph", "function", "xAxis", "yAxis", "fx", "blob", "blob2", "lineExt", "deltaX", "pane"].map(
@@ -545,7 +487,7 @@ export default {
         });
   
       sessionStorage.setItem("funcType", fn); // Creates a local variable "funcType" so that we can keep the selected function consistent when moving to other pages
-
+      sessionStorage.setItem("z0", z0.toString());
       // When "function" changes, animate the change
       el["function"].onchange = fnOnChange;
       // When "deltaX" changes, redraw the graph
@@ -557,7 +499,6 @@ export default {
   
       // Set the cursor to pointer mode when hovering over the graph
       el["graph"].style.cursor = "pointer";
-      // Setting X0 twice? Might be a problem here?
       X0 = [el["blob"].getBBox().x + 207, el["blob"].getBBox().y];
   
       // Create mousePressed variable, set to false by default
@@ -579,6 +520,8 @@ export default {
         dX = [e.clientX - X0[0] + layerOffset, e.clientY - X0[1]] // +layerOffset adjusts mouse pos input for when the side pane is shown
         // Scale the x component of the mouse position between 0 and 1
         z0 = Math.min(Math.max(z00 + dX[0]/xScale, 0), 1 - el["deltaX"].valueAsNumber/xScale);
+        sessionStorage.setItem("z0", z0.toString());
+        console.log(sessionStorage.getItem("z0"));
         // Redraw the graph
         that.redraw();
         return e.preventDefault();
@@ -611,7 +554,6 @@ export default {
       document.body.onclick = null;
 
     };
-  
     return that;
   }());
   MODULE.init();
@@ -623,5 +565,4 @@ export default {
     height:100%;
     overflow:hidden;
   }
-
 </style>

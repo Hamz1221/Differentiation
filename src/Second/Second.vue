@@ -4,6 +4,7 @@
             <template #hotspots>
               <iv-pane position="left" id="pane">
                   <iv-sidebar-content>
+                    <div  style="padding-left:10px; padding-right:10px;">
                        <p>
                       Calculating the value of the gradient at one point on a graph is useful in some cases, but what if we wanted to know how the gradient of the function changes along the x-axis?
                       </p>
@@ -17,52 +18,37 @@
                       <p>
                         For even more visualisation, the slope of f(x) is colour-coded to match when its derivative function is above, below or crossing its x-axis. This shows what it means when we say the gradient/slope of the curve, is positive (green), negative (red) or 0 (white).
                       </p>
+                    </div>
                   </iv-sidebar-content>
                </iv-pane>
 
-                            <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px" transparent>
-                                  <div style="border-top:200px; height:50px; width:100px;">
-                                    <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
-                                    <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
-                                  </div>
-                            </iv-fixed-hotspot>
+              <iv-fixed-hotspot position="topleft" title="Equation" style="z-index:2; width:0px; height:0px" transparent>
+                    <div style="border-top:200px; height:50px; width:200px;">
+                      <img src="../assets/limitEquation.svg" style="position: relative; left:600px; top: 100px; -webkit-filter: invert(1); filter: invert(1);"/>
+                      <p style="position: relative; left:870px; top:45px; -webkit-filter: invert(1); filter: invert(1);">{{derivDisp}}</p>
+                    </div>
+              </iv-fixed-hotspot>
 
-                            <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
-                                <div class="slidecontainer" style="float:right;">
-                                  Function: 
-                                  <select id="function" style="width:188px; padding:0px; margin: 0px;">
-                                    <option value="sin">Sin(x)</option>
-                                    <option value="exp">Exponential Decay</option>
-                                    <option value="tan">Tan(x)</option>
-                                    <option value="gauss">Gaussian</option>
-                                    <option value="parab">Parabola (2nd Order Polynomial)</option>
-                                    <!-- <option value="parabStep">Parabola with Step Function</option> -->
-                                    <option value="poly">Polynomial (6th Order)</option>
-                                  </select>
-                                  <br>
-                                  
-                                  <button style="margin-top: 15px;" type="button" id="animButton">Plot Derivative</button><br>
-                                  <input type="checkbox" id="checkbox" name="check" value="display" style="margin-top: 15px;">
-                                  <label for="checkbox"> Show link</label>                                  
-                                  <!-- Delta x:
-                                  <input type="range" min="0.0001" max="100" value="25" class="slider" id="deltaX" name="deltax" step="0.0001" style="width:188px;margin-top:19px;margin-bottom:14px;"> -->
-                                  
-                                  <!-- <iv-equation-box equation="f(x)=lim_{\delta x \to 0} \frac{f(x - \delta x)}{\delta x} = \qquad">hi</iv-equation-box> -->
+              <iv-toggle-hotspot position="right" title="Sidebar" style="z-index:2;">
+                  <div class="slidecontainer" style="float:right;">
+                    Function: 
+                    <select id="function" style="width:188px; padding:0px; margin: 0px;">
+                      <option value="sin">Sin(x)</option>
+                      <option value="exp">Exponential Decay</option>
+                      <option value="tan">Tan(x)</option>
+                      <option value="gauss">Gaussian</option>
+                      <option value="parab">Parabola (2nd Order Polynomial)</option>
+                      <option value="poly">Polynomial (6th Order)</option>
+                    </select>
+                    <br>
+                    <button style="margin-top: 15px;" type="button" id="animButton">Plot Derivative</button><br>
+                    <input type="checkbox" id="checkbox" name="check" value="display" style="margin-top: 15px;">
+                    <label for="checkbox"> Show link</label>                                                                
+                  </div>
+              </iv-toggle-hotspot>
+          </template>
 
-                                  
-
-
-                                </div>
-                            </iv-toggle-hotspot>
-                        </template>
-
-
-
-
-            <body style="margin:0px; padding:0px; width: 100%;">
-
-
-
+<body style="margin:0px; padding:0px; width: 100%;">
 <svg
    xmlns:ns0="http://www.iki.fi/pav/software/textext/"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -75,7 +61,6 @@
    id="root"
    height="96vh"
    width="100%">
-   <!--when I change height to 100%, the graphs are cut off- not sure why-->
    <defs>
       <g id = "derivColourmask">
          <rect  x="0" y="297.57214" height="200" width="570" fill="green"   stroke="none" />
@@ -134,9 +119,6 @@
        <feComposite in2="SourceGraphic" in="mask1" operator="in" />
    </filter>
 
-
-   <!-- h=700, w-570 -->
-   <!-- change height of above to vary blue bit, so 2 graphs can be included (line 22 and 139)-->
   <defs
      id="defs4">
     <marker
@@ -176,16 +158,7 @@
          id="path7713" />
          <!-- The white arrow on the x-axis -->
     </marker>
-    <!-- <radialGradient
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-0.65523826,0,0,-0.6247619,1172.0929,131.92585)"
-       r="280"
-       fy="105.07805"
-       fx="447.40897"
-       cy="105.07805"
-       cx="447.40897"
-       id="radialGradient4581"
-       xlink:href="#linearGradient4579" /> -->
+
     <linearGradient
        id="linearGradient4579">
       <stop
@@ -259,23 +232,7 @@
        height="10000"
        x="23.123835"
        y="221.57211" />
-    <!--<rect
-       transform="translate(23.123835,221.57211)"
-       y="0"
-       x="0"
-       height="0"
-       width="0"
-       id="rect7177"
-       style="color:white;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:url(#radialGradient4581);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:2, 2;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:url(#marker14780);marker-end:url(#marker15030);paint-order:stroke fill markers;enable-background:accumulate" />-->
-    <!-- <rect
-       style="fill: #7aaed7; stroke: white;"
-       id="right-side-pane"
-       x="625"
-       y="300"
-       width="400"
-       height="380"
-       pathLength="2800"
-       transform="translate(0,-2)"/> -->
+
     <g
        clip-path="url(#clipPath19347)"
        id="graph">
@@ -402,45 +359,7 @@
          id="path10294" />
          <!-- The ')' in 'f(x)' on the y-axis -->
       </g>
-      <!-- <g transform="translate(0,80)">
-      <text
-       id="text18342"
-       y="257.57214"
-       x="55.123837"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       xml:space="preserve">
-       <tspan
-         style="font-size:18.66666603px;text-align:start;text-anchor:start;fill:white;user-select:none;-moz-user-select: none;"
-         y="272.57214"
-         x="660.123837"
-         id="tspan18340">Function</tspan>
-      </text> -->
-      <!-- 'Function' next to the function select box-->
-      <!-- <foreignObject
-       y="255.90814"
-       x="760.80826"
-       height="32"
-       width="192"
-       style="overflow:visible;"
-       id="foFunction">
-       <select id="function" style="width:188px; padding:0px; margin: 0px;">
-        <option value="sin">Sin(x)</option>
-        <option value="exp">Exponential Decay</option>
-        <option value="tan">Tan(x)</option>
-        <option value="gauss">Gaussian</option>
-        <option value="parab">Parabola (2nd Order Polynomial)</option> -->
-        <!-- <option value="parabStep">Parabola with Step Function</option> -->
-        <!-- <option value="poly">Polynomial (6th Order)</option>
-       </select>
-       <div class="slidecontainer">
-       </div>
-       <button style="margin-top: 15px;" type="button" id="animButton">Plot Derivative</button><br>
-       <input type="checkbox" id="checkbox" name="check" value="display" style="margin-top: 15px;">
-       <label for="checkbox"> Show link</label>
-      </foreignObject>
-      </g> -->
-    <!-- The function select box -->
-    
+
   </g>
   <g
      transform="translate(-23.123835,200)"
@@ -623,14 +542,13 @@ export default {
       t = 0, T = 1, f = 60,
       ivl, iFn, lastFrame;
 
-
-
     var fn=sessionStorage.getItem("funcType") || "exp", oldfn=sessionStorage.getItem("funcType") || "exp", p=1; // Default: start with sine if there is no value for "funcType"
+    var z0 = parseFloat(sessionStorage.getItem("z0")) || 0.45;
     // c, o, t used for taylor series
     var c1=1, c2=0, c3=0; // current c0 etc.
     var o1=1, o2=0, o3=0; // old c0 etc.
     var t1=1, t2=0, t3=0; // target c0 etc.
-    var X0 = [0,0], dX = [0,0], z00=0.45, z0 = 0.45;;
+    var X0 = [0,0], dX = [0,0], z00=0.45;;
     var el = that.el = {};
   
     var fnOnChange;
@@ -638,7 +556,6 @@ export default {
     let xDiff;
     let animTime = "8s";
     const override = new Event('animationend');
-    let minVal;
     let clicked;
     let layerOffset; // Shifts mouse x input by how far the pane on the left covers the screen, otherwise the input would be off
 
@@ -661,15 +578,11 @@ export default {
       "parab" : function (z) {
         return 20*(z-0.5)*(z-0.5)-2.5;
       },
-      "parabStep" : function (z) {
-        return 20*(z-0.5)*(z-0.5)-2.5 + ((z<0.6)?0:2);
-      },
       "poly" : function (x) {
         return ((8*(x-0.5))**6/6 - 3*(8*(x-0.5))**4 - 2*(8*(x-0.5))**3/3 + 27*(8*(x-0.5))**2/2 + 18*(8*(x-0.5)) - 30) / 100*3;
       }
     }
-    /* First derivates of the functions in the fns object. This could be useful for
-      the second page of our vis
+    /* First derivates of the functions in the fns object.
       */
     var fn1s = { // First Derivative
       "sin" : function (z) {
@@ -691,7 +604,6 @@ export default {
         return (8*((8*(x-0.5))**5 - 12*(8*(x-0.5))**3 - 2*(8*(x-0.5))**2 + 27*(8*(x-0.5)) + 18) / 100*3);
       }
     }
-    fn1s["parabStep"] = fn1s["parab"]
     /* This function is called when the function is changed and performs the 
       animation
       */
@@ -772,7 +684,6 @@ export default {
           break;
         case "exp":
         case "parab":
-        case "parabStep":
           adj = 5;
           break;
         case "tan":
@@ -808,30 +719,34 @@ export default {
       el["fx"].setAttribute("d", fxStr);
       el["fx-1"].setAttribute("d", f1xStr);
 
-      el["blob"].setAttribute("d", "M " + (x0+xScale*z0) + "," + y0 + " L " + (x0+xScale*z0) + "," + (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)) ));
-      el["blob2"].setAttribute("d", "M " + (x0+xScale*z0 + xOffset) + "," + y0 + " L " + (x0+xScale*z0 + xOffset) + "," + (y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale)) ));
+      let blobX = x0+xScale*z0;
+      let blob2X = blobX + xOffset;
+      let blobY = y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0));
+      let blob2Y = y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale));
 
-      let angle = Math.atan2((y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))) - (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0))), (x0+xScale*z0 + xOffset) - (x0+xScale*z0)) * 180 / Math.PI;
-      let excess = 577 - (y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0))); // This calculates what the x2 attibute of lineExt2 should be to show the link between the two graphs as the derivative is being drawn
-      excess += (y0+yScale* (p*fn1s[fn](z0)/adj + (1-p)*fn1s[oldfn](z0)/adj)) - 497.57214;
+      el["blob"].setAttribute("d", "M " + (blobX) + "," + y0 + " L " + (blobX) + "," + (blobY ));
+      el["blob2"].setAttribute("d", "M " + (blob2X) + "," + y0 + " L " + (blob2X) + "," + (blob2Y ));
+
+      let angle = Math.atan2((blob2Y) - (blobY), (blob2X) - (blobX)) * 180 / Math.PI;
+      let excess = 577 - (blobY); // This calculates what the x2 attibute of lineExt2 should be to show the link between the two graphs as the derivative is being drawn
+      excess += (y0+yScale* (p*fn1s[fn](z0)/adj + (1-p)*fn1s[oldfn](z0)/adj)) - y0;
       
-      el["lineExt"].setAttribute("transform", `translate(${((x0+xScale*z0)+(x0+xScale*z0 + xOffset))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);
-      el["lineExt2"].setAttribute("transform", `translate(${((x0+xScale*z0)+(x0+xScale*z0 + xOffset))/2 - xDiff}, ${((y0+yScale* (p*fns[fn](z0) + (1-p)*fns[oldfn](z0)))+(y0+yScale* (p*fns[fn](z0 + xOffset/xScale) + (1-p)*fns[oldfn](z0 + xOffset/xScale))))/2 - y0}) rotate(90, ${xDiff}, ${y0})`);
+      el["lineExt"].setAttribute("transform", `translate(${((blobX)+(blob2X))/2 - xDiff}, ${((blobY)+(blob2Y))/2 - y0}) rotate(${angle}, ${xDiff}, ${y0})`);
+      el["lineExt2"].setAttribute("transform", `translate(${((blobX)+(blob2X))/2 - xDiff}, ${((blobY)+(blob2Y))/2 - y0}) rotate(90, ${xDiff}, ${y0})`);
       el["lineExt2"].setAttribute("x2", `${excess}`);
-
+      console.log(el["lineExt2"].getAttribute("x2"));
       // Display value of gradient
       var zOffset = xOffset/xScale;
       var gradient = ((fns[fn](z0 + zOffset) - fns[fn](z0))/zOffset)/18.8;
       
-      vm.derivDisp = gradient.toFixed(2).toString();
+      vm.derivDisp = gradient.toFixed(2).toString() + " (2dp)";
     };
   
-    // This function runs when the page loads (see <body> tag in index.html)
+    // This function runs when MODULE.init() is called
     that.init = function () {
 
       // Create an array of the elements using their ids and getElementById
-      ["root", "graph", "function", "xAxis", "yAxis", "xAxis-1", "yAxis-1", "fx", "fx-1", "blob", "blob2", "lineExt", "animButton", "rect", "duration", "lineExt2", "gradientDisplayVal1",
-      "gradientDisplayVal2","gradientDisplayValx1", "gradientDisplayValx2", "gradientDisplayValdx1","gradientDisplayValdx2", "limitDisplay", "gradientDisplay", "func", "checkbox", "pane"].map(
+      ["root", "graph", "function", "xAxis", "yAxis", "xAxis-1", "yAxis-1", "fx", "fx-1", "blob", "blob2", "lineExt", "animButton", "rect", "lineExt2", "func", "checkbox", "pane"].map(
 
         function (id) {
           el[id] = document.getElementById(id);
@@ -845,7 +760,6 @@ export default {
       el["lineExt2"].setAttribute("visibility", "hidden");
       xDiff = (parseFloat(el["lineExt"].getAttribute('x1')) + parseFloat(el["lineExt"].getAttribute("x2"))) / 2;
       clicked = false;
-      minVal = 0.0001;
       el["lineExt"].setAttribute("stroke-dasharray", "0");
       // When "function" changes, animate the change
       el["function"].onchange = fnOnChange;
@@ -877,11 +791,12 @@ export default {
         el["graph"].style.cursor = "grabbing";
         // Find the position of the cursor
         let paneWidth = el["pane"].getAttribute("style");
-        paneWidth = parseInt(paneWidth.substring(6, paneWidth.length - 3));
+        paneWidth = parseFloat(paneWidth.substring(6, paneWidth.length - 3));
         layerOffset = -paneWidth;
         dX = [e.clientX - X0[0] + layerOffset, e.clientY - X0[1]] // +layerOffset adjusts mouse pos input for when the side pane is shown
         // Scale the x component of the mouse position between 0 and 1
         z0 = Math.min(Math.max(z00 + dX[0]/xScale, 0), 1);
+        sessionStorage.setItem("z0", z0.toString());
         // Redraw the graph
         that.redraw();
         return e.preventDefault();
@@ -928,15 +843,9 @@ export default {
       document.body.onclick = null;
 
     };
-  
     return that;
-
-
-
   }());
   MODULE.init();
-
-
     }
 }
 </script>
