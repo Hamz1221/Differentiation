@@ -4,28 +4,19 @@
             <template #hotspots>
               <iv-pane position="left" id="pane">
                   <iv-sidebar-content>
-                    <iv-sidebar-section title="Theory">
-                      <p>
-                      Given some solid, how can we model sound waves moving through it?
+                       <p>
+                      Calculating the value of the gradient at one point on a graph is useful in some cases, but what if we wanted to know how the gradient of the function changes along the x-axis?
                       </p>
                       <p>
-                      Let us assume that this is a simple solid, made of identical atoms spaced evenly.
-                      We know that atoms in a solid lattice are held together by binding forces, for example ionic, covalent and metallic bonds.
-                      The Mie potential shown on the right is generally a good model for binding forces in solids.
+                      We can visualise exactly that. By differentiating the function, we get a new graph that represents the gradient of the original graph at every single point on the x-axis, 1-to-1.
                       </p>
                       <p>
-                      Let us model the binding forces using springs. 
-                      We model all atoms as connected to only their nearest neighbours by identical springs.
-                      This model is accurate in the small displacement limit, that is the low temperature limit.
+                      If you press the "Plot Derivative" button you will see the gradient of f(x) pass over the entire function while the derivative function, f'(x), is drawn along with it. You can toggle on/off
+                      the link between the two graphs to better help visualise what it means when the gradient is at a particular slope while it's being drawn.
                       </p>
-                    </iv-sidebar-section>
-                    <iv-sidebar-section title="Explanation" icon="question" theme="Lime" highlight>
-                        Let's explore this model. 
-                      We will start considering the simple case of a one dimensional lattice, building up the theory. 
-                      Here we will develop the concept of the first Brillouin Zone and how energy moves through the solid in the form of waves.
-                      Then we will look at a two dimensional lattice and consider transverse and longitudinal waves passing through the solid.
-                      We will continue to three dimensional solids for completeness.
-                    </iv-sidebar-section>
+                      <p>
+                        For even more visualisation, the slope of f(x) is colour-coded to match when its derivative function is above, below or crossing its x-axis. This shows what it means when we say the gradient/slope of the curve, is positive (green), negative (red) or 0 (white).
+                      </p>
                   </iv-sidebar-content>
                </iv-pane>
 
@@ -604,7 +595,7 @@
       </g>
       <line
       x1="-323" y1="497.57214" x2="1300" y2="497.57214" transform="translate(0,0) rotate(0)" id="lineExt2" style="stroke:#6208b6" stroke-width="2"/>
-      <!-- This line is used for testing purposes to see if the drawing animations line up exactly, it is defualted to hidden and only seen when made visible, in the end this can be removed-->
+      <!-- This line is used to show the link between the two graphs while the derivative is being plotted-->
   </g>
     
 </svg> 
@@ -964,5 +955,10 @@ export default {
             to {
                 width: var(--axis-width);
             }
+        }
+        body, svg{
+          height: 100%;
+          min-height: 850px;
+          overflow: hidden;
         }
       </style>

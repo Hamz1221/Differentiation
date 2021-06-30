@@ -4,7 +4,7 @@
             <template #hotspots>
                 <iv-pane position="left" id="pane">
                   <iv-sidebar-content>
-                    <iv-sidebar-section title="Theory" :highlight="true">
+
                       <p>
                       Here is an interactive graph plot that allows you change the function and Delta x between the two distinct
 points on the graph.
@@ -22,7 +22,7 @@ each and every new point it covers.
 delta x is close to 0, but never actually 0, the equation becomes a limit equation, calculating the true
 value of the gradient at that point.
                       </p>
-                    </iv-sidebar-section>
+    
 
                   </iv-sidebar-content>
                 </iv-pane>
@@ -619,5 +619,9 @@ export default {
 }
 </script>
 <style>
+  body, svg{
+    height:100%;
+    overflow:hidden;
+  }
 
 </style>
