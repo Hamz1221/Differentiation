@@ -318,10 +318,10 @@ value of the gradient at that point.
 <script>
 import vue_config from '../../vue.config.js'
 export default {
-    name:"first",
+    name:"Finite Difference",
     data(){
         return {
-            pageName:"First",
+            pageName:"Finite Difference",
             derivDisp: 0.5,
             xValDisp: 0.4,
             deltaDist: 0.1,

@@ -7,12 +7,12 @@ module.exports = {
         },
             first:{
                 entry:'src/First/main.js',
-                title:'First',
+                title:'Finite Difference',
                 
             },
             second:{
                 entry:'src/Second/main.js',
-                title:'Second',
+                title:'Derivative Construction',
                 
             },
     }

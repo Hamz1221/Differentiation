@@ -35,8 +35,8 @@
         "eslint": false,
         "katex": true,
         "pages": [
-            "First",
-            "Second"
+            "Finite Difference",
+            "Derivative Construction"
         ]
     }
 }

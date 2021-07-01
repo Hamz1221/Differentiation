@@ -526,10 +526,10 @@
 <script>
 import vue_config from '../../vue.config.js'
 export default {
-    name:"second",
+    name:"Derivative Construction",
     data(){
         return {
-            pageName:"Second",
+            pageName:"Derivative Construction",
             derivDisp: 1,
             vue_config
         }
